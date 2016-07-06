@@ -31,7 +31,9 @@ public class MainActivity extends AppCompatActivity {
     private CheckBox q4InputF;
     private CheckBox q5InputT;
     private CheckBox q5InputF;
+    private CheckBox q5InputM;
     private Button submitButton;
+    private int score;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,11 +52,14 @@ public class MainActivity extends AppCompatActivity {
         q4InputF = (CheckBox)findViewById(R.id.q4AnswerF);
         q5InputT = (CheckBox)findViewById(R.id.q5AnswerT);
         q5InputF = (CheckBox)findViewById(R.id.q5AnswerF);
+        q5InputM = (CheckBox)findViewById(R.id.q5AnswerM);
 
         submitButton = (Button) findViewById(R.id.button);
 
         final int selectedId = radioButtonGroup.getCheckedRadioButtonId();
         selectedRadioBtn = (RadioButton) findViewById(selectedId);
+
+        score = 5;
 
         radioButtonGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
@@ -73,56 +78,83 @@ public class MainActivity extends AppCompatActivity {
 
                 q2Answer = String.valueOf(q2Input.getText());
                 q3Answer = String.valueOf(q3Input.getText());
-                if(q4InputT.isChecked()){
+
+                if(q4InputT.isChecked() && !q4InputF.isChecked()) {
                     q4Answer = "true";
-                    q4InputF.setChecked(false);
+                }else{
+                    q4Answer="false";
                 }
 
 
-                if(q4InputF.isChecked()){
-                    q4Answer = "false";
-                    q4InputT.setChecked(false);
-                }
+//                if(q4InputT.isChecked()){
+//                    q4Answer = "true";
+//                    q4InputF.setChecked(false);
+//                }
+//
+//
+//                if(q4InputF.isChecked()){
+//                    q4Answer = "false";
+//                    q4InputT.setChecked(false);
+//                }
 
 
-                if(q5InputT.isChecked()){
+                if(q5InputT.isChecked() && !q5InputF.isChecked()){
                     q5Answer = "yes";
-                    q5InputF.setChecked(false);
+
+                }else {
+                    q5Answer = "no";
                 }
 
-                if(q5InputF.isChecked()){
-                    q5Answer = "no";
-                    q5InputT.setChecked(false);
+                if(q5InputM.isChecked()){
+                    q5Answer = "maybe";
                 }
+
+//                if(q5InputF.isChecked()){
+//                    q5Answer = "no";
+//                    q5InputT.setChecked(false);
+//                }
 
                 System.out.println(q1Answer);
                 System.out.println(q2Answer);
                 System.out.println(q3Answer);
                 System.out.println(q4Answer);
                 System.out.println(q5Answer);
+                System.out.println(score);
 
                 if(!q1Answer.equals(null)  ||!q2Answer.equals(null)  ||!q3Answer.equals(null)  ||!q4Answer.equals(null)  || !q5Answer.equals(null)){
                     if(!(q1Answer.equals("Chest"))){
                         Toast.makeText(getApplicationContext(), "Bench press works out chest", Toast.LENGTH_SHORT).show();
+                        score = score - 1;
                     }
 
                     if(!(q2Answer.equals("tricep"))){
                         Toast.makeText(getApplicationContext(), "Rope pulldown works out tricep", Toast.LENGTH_SHORT).show();
+                        score = score - 1;
                     }
 
                     if(!(q3Answer.equals("front"))){
                         Toast.makeText(getApplicationContext(), "Shoulder press works out front delt", Toast.LENGTH_SHORT).show();
+                        score = score - 1;
                     }
 
                     if(!(q4Answer.equals("true"))){
                         Toast.makeText(getApplicationContext(), "Shoulder press works out front delt", Toast.LENGTH_SHORT).show();
+                        score = score - 1;
                     }
 
                     if(!(q5Answer.equals("no"))){
                         Toast.makeText(getApplicationContext(), "Don't roid. It's not good for you.", Toast.LENGTH_SHORT).show();
+                        score = score - 1;
                     }
-                }
 
+                    if(q5Answer.equals("maybe")){
+                        Toast.makeText(getApplicationContext(), "Maybe some cycle your roid to get a bit of size :)", Toast.LENGTH_SHORT).show();
+                    }
+
+                    Toast.makeText(getApplicationContext(), "Your score is " + score + " out of 5", Toast.LENGTH_SHORT).show();
+
+                    System.out.println(score);
+                }
             }
         });
     }

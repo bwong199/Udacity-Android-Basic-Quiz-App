@@ -12,128 +12,165 @@
 
 
     <ScrollView
+        android:id="@+id/scrollView"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/scrollView">
+        android:layout_height="wrap_content">
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
             <TextView
+                android:id="@+id/appTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
                 android:text="Workout Quiz App"
-                android:id="@+id/textView" android:layout_alignParentTop="true"
-                android:layout_centerHorizontal="true"/>
+                android:textAppearance="?android:attr/textAppearanceLarge"/>
             <TextView
+                android:id="@+id/q1TV"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Which muscle group does bench press workout?"
-                android:id="@+id/textView2" android:layout_below="@+id/textView"
-                android:layout_alignParentLeft="true" android:layout_alignParentStart="true"
-                android:layout_marginTop="20dp"/>
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/appTitle"
+                android:layout_marginTop="20dp"
+                android:text="Which muscle group does bench press workout?"/>
             <RadioGroup
+                android:id="@+id/radioButtonGroup"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true" android:layout_below="@+id/textView2"
-                android:orientation="vertical" android:id="@+id/radioButtonGroup">
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/q1TV"
+                android:orientation="vertical">
                 <RadioButton
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Lats"
                     android:id="@+id/radioLatAnswer"
-                    android:checked="false" android:layout_below="@+id/textView2"
-                    android:layout_alignLeft="@+id/textView" android:layout_alignStart="@+id/textView"/>
-                <RadioButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Chest"
-                    android:id="@+id/radioChestAnswer" android:layout_below="@+id/textView2"
-                    android:layout_alignParentLeft="true" android:layout_alignParentStart="true"
-                    android:checked="false"/>
+                    android:layout_alignLeft="@+id/appTitle"
+                    android:layout_alignStart="@+id/appTitle"
+                    android:layout_below="@+id/q1TV"
+                    android:checked="false"
+                    android:text="Lats"/>
                 <RadioButton
+                    android:id="@+id/radioChestAnswer"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Bicep"
-                    android:id="@+id/radioBicepAnswer" android:checked="false"/>
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_below="@+id/q1TV"
+                    android:checked="false"
+                    android:text="Chest"/>
+                <RadioButton
+                    android:id="@+id/radioBicepAnswer"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="false" android:text="Bicep"/>
+                <TextView
+                    android:id="@+id/q2TV"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_below="@+id/q2Answer"
+                    android:layout_marginTop="20dp"
+                    android:text="Which side of the deltoid does shoulder press workout?"/>
+                <EditText
+                    android:id="@+id/q3Answer"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_below="@+id/q2TV"
+                    android:hint="front, side, rear?"/>
+                <TextView
+                    android:id="@+id/q3TV"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_below="@+id/scrollView"
+                    android:layout_marginTop="20dp"
+                    android:text="Which muscle group does rope pulldown workout?"/>
+                <EditText
+                    android:id="@+id/q2Answer"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignEnd="@+id/q3TV"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignRight="@+id/q3TV"
+                    android:layout_below="@+id/q3TV"
+                    android:hint="tricep, bicep, shoulders?"/>
+                <TextView
+                    android:id="@+id/q4TV"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_below="@+id/q3Answer"
+                    android:layout_marginTop="20dp"
+                    android:text="Wide-grip pulldown works out lower lat?"/>
+                <CheckBox
+                    android:id="@+id/q4AnswerT"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_below="@+id/q4TV"
+                    android:checked="false"
+                    android:text="True"/>
+                <CheckBox
+                    android:id="@+id/q4AnswerF"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_above="@+id/q5TV"
+                    android:layout_toEndOf="@+id/q4AnswerT"
+                    android:layout_toRightOf="@+id/q4AnswerT"
+                    android:checked="false"
+                    android:text="False"/>
+                <TextView
+                    android:id="@+id/q5TV"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_below="@+id/q4AnswerT"
+                    android:layout_marginTop="20dp"
+                    android:text="Steroids is good for you?"/>
+                <CheckBox
+                    android:id="@+id/q5AnswerT"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_below="@+id/q5TV"
+                    android:checked="false"
+                    android:text="Yes"/>
+                <CheckBox
+                    android:id="@+id/q5AnswerF"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_above="@+id/button"
+                    android:layout_toEndOf="@+id/q5AnswerT"
+                    android:layout_toRightOf="@+id/q5AnswerT"
+                    android:checked="false"
+                    android:text="No"/>
+                <CheckBox
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Not sure"
+                    android:id="@+id/q5AnswerM"/>
+                <Button
+                    android:id="@+id/button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/q5AnswerT"
+                    android:layout_centerHorizontal="true"
+                    android:text="Submit"/>
             </RadioGroup>
         </RelativeLayout>
     </ScrollView>
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Which muscle group does rope pulldown workout?"
-        android:id="@+id/textView3" android:layout_below="@+id/scrollView"
-        android:layout_alignParentLeft="true" android:layout_alignParentStart="true"
-        android:layout_marginTop="20dp"/>
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/q2Answer" android:layout_below="@+id/textView3"
-        android:layout_alignParentLeft="true" android:layout_alignParentStart="true"
-        android:layout_alignRight="@+id/textView3" android:layout_alignEnd="@+id/textView3"
-        android:hint="tricep, bicep, shoulders?"/>
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Which side of the deltoid does shoulder press workout?"
-        android:id="@+id/textView4" android:layout_below="@+id/q2Answer"
-        android:layout_alignParentLeft="true" android:layout_alignParentStart="true"
-        android:layout_marginTop="20dp"/>
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/q3Answer" android:layout_below="@+id/textView4"
-        android:layout_alignParentLeft="true" android:layout_alignParentStart="true"
-        android:layout_alignParentRight="true" android:layout_alignParentEnd="true"
-        android:hint="front, side, rear?"/>
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Wide-grip pulldown works out lower lat?"
-        android:id="@+id/textView5" android:layout_below="@+id/q3Answer"
-        android:layout_alignParentLeft="true" android:layout_alignParentStart="true"
-        android:layout_marginTop="20dp"/>
-    <CheckBox
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="True"
-        android:id="@+id/q4AnswerT" android:layout_below="@+id/textView5"
-        android:layout_alignParentLeft="true" android:layout_alignParentStart="true"
-        android:checked="false"/>
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Steroids is good for you?"
-        android:id="@+id/textView6" android:layout_below="@+id/q4AnswerT"
-        android:layout_alignParentLeft="true" android:layout_alignParentStart="true"
-        android:layout_marginTop="20dp"/>
-    <CheckBox
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Yes"
-        android:id="@+id/q5AnswerT" android:layout_below="@+id/textView6"
-        android:layout_alignParentLeft="true" android:layout_alignParentStart="true"
-        android:checked="false"/>
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Submit"
-        android:id="@+id/button"
-        android:layout_below="@+id/q5AnswerT" android:layout_centerHorizontal="true"/>
-    <CheckBox
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="False"
-        android:id="@+id/q4AnswerF" android:layout_above="@+id/textView6"
-        android:layout_toRightOf="@+id/q4AnswerT" android:layout_toEndOf="@+id/q4AnswerT"
-        android:checked="false"/>
-    <CheckBox
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="No"
-        android:id="@+id/q5AnswerF" android:layout_above="@+id/button"
-        android:layout_toRightOf="@+id/q5AnswerT" android:layout_toEndOf="@+id/q5AnswerT"
-        android:checked="false"/>
 </RelativeLayout>
