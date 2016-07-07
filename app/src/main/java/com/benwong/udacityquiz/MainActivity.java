@@ -27,13 +27,16 @@ public class MainActivity extends AppCompatActivity {
 
     private EditText q2Input;
     private EditText q3Input;
-    private CheckBox q4InputT;
-    private CheckBox q4InputF;
+    private CheckBox q4CheckboxAbs;
+    private CheckBox q4CheckboxHamstring;
+    private CheckBox q4CheckboxBicep;
+    private CheckBox q4CheckboxTricep;
+
     private CheckBox q5InputT;
     private CheckBox q5InputF;
     private CheckBox q5InputM;
     private Button submitButton;
-    private int score;
+    private int mScore;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,8 +51,12 @@ public class MainActivity extends AppCompatActivity {
 
         q2Input = (EditText)findViewById(R.id.q2Answer);
         q3Input = (EditText)findViewById(R.id.q3Answer);
-        q4InputT = (CheckBox)findViewById(R.id.q4AnswerT);
-        q4InputF = (CheckBox)findViewById(R.id.q4AnswerF);
+        q4CheckboxAbs = (CheckBox)findViewById(R.id.q4AnswerAbs);
+        q4CheckboxHamstring = (CheckBox)findViewById(R.id.q4AnswerHamstring);
+        q4CheckboxBicep = (CheckBox)findViewById(R.id.q4AnswerBicep);
+        q4CheckboxTricep = (CheckBox)findViewById(R.id.q4AnswerTricep);
+
+
         q5InputT = (CheckBox)findViewById(R.id.q5AnswerT);
         q5InputF = (CheckBox)findViewById(R.id.q5AnswerF);
         q5InputM = (CheckBox)findViewById(R.id.q5AnswerM);
@@ -59,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
         final int selectedId = radioButtonGroup.getCheckedRadioButtonId();
         selectedRadioBtn = (RadioButton) findViewById(selectedId);
 
-        score = 5;
+        mScore = 5;
 
         radioButtonGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
@@ -79,23 +86,11 @@ public class MainActivity extends AppCompatActivity {
                 q2Answer = String.valueOf(q2Input.getText());
                 q3Answer = String.valueOf(q3Input.getText());
 
-                if(q4InputT.isChecked() && !q4InputF.isChecked()) {
+                if(q4CheckboxBicep.isChecked() && q4CheckboxTricep.isChecked() && !q4CheckboxHamstring.isChecked() && !q4CheckboxAbs.isChecked()) {
                     q4Answer = "true";
                 }else{
                     q4Answer="false";
                 }
-
-
-//                if(q4InputT.isChecked()){
-//                    q4Answer = "true";
-//                    q4InputF.setChecked(false);
-//                }
-//
-//
-//                if(q4InputF.isChecked()){
-//                    q4Answer = "false";
-//                    q4InputT.setChecked(false);
-//                }
 
 
                 if(q5InputT.isChecked() && !q5InputF.isChecked()){
@@ -109,51 +104,48 @@ public class MainActivity extends AppCompatActivity {
                     q5Answer = "maybe";
                 }
 
-//                if(q5InputF.isChecked()){
-//                    q5Answer = "no";
-//                    q5InputT.setChecked(false);
-//                }
 
                 System.out.println(q1Answer);
                 System.out.println(q2Answer);
                 System.out.println(q3Answer);
                 System.out.println(q4Answer);
                 System.out.println(q5Answer);
-                System.out.println(score);
+                System.out.println(mScore);
 
                 if(!q1Answer.equals(null)  ||!q2Answer.equals(null)  ||!q3Answer.equals(null)  ||!q4Answer.equals(null)  || !q5Answer.equals(null)){
                     if(!(q1Answer.equals("Chest"))){
                         Toast.makeText(getApplicationContext(), "Bench press works out chest", Toast.LENGTH_SHORT).show();
-                        score = score - 1;
+                        mScore = mScore - 1;
                     }
 
-                    if(!(q2Answer.equals("tricep"))){
+                    if(!(q2Answer.equalsIgnoreCase("tricep"))){
                         Toast.makeText(getApplicationContext(), "Rope pulldown works out tricep", Toast.LENGTH_SHORT).show();
-                        score = score - 1;
+                        mScore = mScore - 1;
                     }
 
-                    if(!(q3Answer.equals("front"))){
+                    if(!(q3Answer.equalsIgnoreCase("front"))){
                         Toast.makeText(getApplicationContext(), "Shoulder press works out front delt", Toast.LENGTH_SHORT).show();
-                        score = score - 1;
+                        mScore = mScore - 1;
                     }
 
-                    if(!(q4Answer.equals("true"))){
-                        Toast.makeText(getApplicationContext(), "Shoulder press works out front delt", Toast.LENGTH_SHORT).show();
-                        score = score - 1;
+                    if(!(q4Answer.equalsIgnoreCase("true"))){
+                        Toast.makeText(getApplicationContext(), "Biceps and triceps are muscles in the arm.", Toast.LENGTH_SHORT).show();
+                        mScore = mScore - 1;
                     }
 
-                    if(!(q5Answer.equals("no"))){
+                    if(!(q5Answer.equalsIgnoreCase("no"))){
                         Toast.makeText(getApplicationContext(), "Don't roid. It's not good for you.", Toast.LENGTH_SHORT).show();
-                        score = score - 1;
+                        mScore = mScore - 1;
                     }
 
-                    if(q5Answer.equals("maybe")){
+                    if(q5Answer.equalsIgnoreCase("maybe")){
                         Toast.makeText(getApplicationContext(), "Maybe some cycle your roid to get a bit of size :)", Toast.LENGTH_SHORT).show();
                     }
 
-                    Toast.makeText(getApplicationContext(), "Your score is " + score + " out of 5", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "Your mScore is " + mScore + " out of 5", Toast.LENGTH_SHORT).show();
 
-                    System.out.println(score);
+                    System.out.println(mScore);
+                    mScore = 5;
                 }
             }
         });

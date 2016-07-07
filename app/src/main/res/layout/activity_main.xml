@@ -112,32 +112,42 @@
                     android:layout_alignParentStart="true"
                     android:layout_below="@+id/q3Answer"
                     android:layout_marginTop="20dp"
-                    android:text="Wide-grip pulldown works out lower lat?"/>
+                    android:text="Which of the following are muscle groups in the arms"/>
                 <CheckBox
-                    android:id="@+id/q4AnswerT"
+                    android:id="@+id/q4AnswerAbs"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentLeft="true"
                     android:layout_alignParentStart="true"
                     android:layout_below="@+id/q4TV"
                     android:checked="false"
-                    android:text="True"/>
+                    android:text="Abs"/>
                 <CheckBox
-                    android:id="@+id/q4AnswerF"
+                    android:id="@+id/q4AnswerHamstring"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_above="@+id/q5TV"
-                    android:layout_toEndOf="@+id/q4AnswerT"
-                    android:layout_toRightOf="@+id/q4AnswerT"
+                    android:layout_toEndOf="@+id/q4AnswerAbs"
+                    android:layout_toRightOf="@+id/q4AnswerAbs"
                     android:checked="false"
-                    android:text="False"/>
+                    android:text="Hamstring"/>
+                <CheckBox
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Bicep"
+                    android:id="@+id/q4AnswerBicep" android:checked="false"/>
+                <CheckBox
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Tricep"
+                    android:id="@+id/q4AnswerTricep" android:checked="false"/>
                 <TextView
                     android:id="@+id/q5TV"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentLeft="true"
                     android:layout_alignParentStart="true"
-                    android:layout_below="@+id/q4AnswerT"
+                    android:layout_below="@+id/q4AnswerAbs"
                     android:layout_marginTop="20dp"
                     android:text="Steroids is good for you?"/>
                 <CheckBox
