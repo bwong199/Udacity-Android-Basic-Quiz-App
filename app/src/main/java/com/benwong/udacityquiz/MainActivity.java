@@ -61,6 +61,13 @@ public class MainActivity extends AppCompatActivity {
         q5InputF = (CheckBox)findViewById(R.id.q5AnswerF);
         q5InputM = (CheckBox)findViewById(R.id.q5AnswerM);
 
+        q1Answer = "";
+        q2Answer = "";
+        q3Answer = "";
+        q4Answer = "";
+        q5Answer = "";
+
+
         submitButton = (Button) findViewById(R.id.button);
 
         final int selectedId = radioButtonGroup.getCheckedRadioButtonId();
@@ -112,41 +119,56 @@ public class MainActivity extends AppCompatActivity {
                 System.out.println(q5Answer);
                 System.out.println(mScore);
 
-                if(!q1Answer.equals(null)  ||!q2Answer.equals(null)  ||!q3Answer.equals(null)  ||!q4Answer.equals(null)  || !q5Answer.equals(null)){
-                    if(!(q1Answer.equals("Chest"))){
-                        Toast.makeText(getApplicationContext(), "Bench press works out chest", Toast.LENGTH_SHORT).show();
-                        mScore = mScore - 1;
+                try  {
+                    if(!(q1Answer.equals(""))  ||!(q2Answer.equals(""))  ||!(q3Answer.equals(""))  ||!(q4Answer.equals("")) || !(q5Answer.equals(""))){
+                        if(!(q1Answer.equals("Chest"))){
+                            Toast.makeText(getApplicationContext(), "Bench press works out chest", Toast.LENGTH_SHORT).show();
+                            mScore = mScore - 1;
+                        }
+
+                        if(!(q2Answer.equalsIgnoreCase("tricep"))){
+                            Toast.makeText(getApplicationContext(), "Rope pulldown works out tricep", Toast.LENGTH_SHORT).show();
+                            mScore = mScore - 1;
+                        }
+
+                        if(!(q3Answer.equalsIgnoreCase("front"))){
+                            Toast.makeText(getApplicationContext(), "Shoulder press works out front delt", Toast.LENGTH_SHORT).show();
+                            mScore = mScore - 1;
+                        }
+
+                        if(!(q4Answer.equalsIgnoreCase("true"))){
+                            Toast.makeText(getApplicationContext(), "Biceps and triceps are muscles in the arm.", Toast.LENGTH_SHORT).show();
+                            mScore = mScore - 1;
+                        }
+
+                        if(!(q5Answer.equalsIgnoreCase("no"))){
+                            Toast.makeText(getApplicationContext(), "Don't roid. It's not good for you.", Toast.LENGTH_SHORT).show();
+                            mScore = mScore - 1;
+                        }
+
+                        if(!(q5Answer.equalsIgnoreCase("no"))){
+                            Toast.makeText(getApplicationContext(), "Don't roid. It's not good for you.", Toast.LENGTH_SHORT).show();
+                            mScore = mScore - 1;
+                        }else if(q5Answer.equalsIgnoreCase("maybe")){
+                            Toast.makeText(getApplicationContext(), "Maybe some cycle your roid to get a bit of size :)", Toast.LENGTH_SHORT).show();
+                        }else{
+                            // additional Toast
+                            Toast.makeText(getApplicationContext(), "Please answer the last question :)", Toast.LENGTH_SHORT).show();
+                            mScore = mScore - 1;
+                        }
+
+                        Toast.makeText(getApplicationContext(), "Your mScore is " + mScore + " out of 5", Toast.LENGTH_SHORT).show();
+
+                        System.out.println(mScore);
+                        mScore = 5;
+                    }else {
+                        Toast.makeText(getApplicationContext(), "Please fill in all the answers", Toast.LENGTH_SHORT).show();
                     }
-
-                    if(!(q2Answer.equalsIgnoreCase("tricep"))){
-                        Toast.makeText(getApplicationContext(), "Rope pulldown works out tricep", Toast.LENGTH_SHORT).show();
-                        mScore = mScore - 1;
-                    }
-
-                    if(!(q3Answer.equalsIgnoreCase("front"))){
-                        Toast.makeText(getApplicationContext(), "Shoulder press works out front delt", Toast.LENGTH_SHORT).show();
-                        mScore = mScore - 1;
-                    }
-
-                    if(!(q4Answer.equalsIgnoreCase("true"))){
-                        Toast.makeText(getApplicationContext(), "Biceps and triceps are muscles in the arm.", Toast.LENGTH_SHORT).show();
-                        mScore = mScore - 1;
-                    }
-
-                    if(!(q5Answer.equalsIgnoreCase("no"))){
-                        Toast.makeText(getApplicationContext(), "Don't roid. It's not good for you.", Toast.LENGTH_SHORT).show();
-                        mScore = mScore - 1;
-                    }
-
-                    if(q5Answer.equalsIgnoreCase("maybe")){
-                        Toast.makeText(getApplicationContext(), "Maybe some cycle your roid to get a bit of size :)", Toast.LENGTH_SHORT).show();
-                    }
-
-                    Toast.makeText(getApplicationContext(), "Your mScore is " + mScore + " out of 5", Toast.LENGTH_SHORT).show();
-
-                    System.out.println(mScore);
-                    mScore = 5;
+                }catch(Exception e){
+                    e.printStackTrace();
                 }
+
+
             }
         });
     }
